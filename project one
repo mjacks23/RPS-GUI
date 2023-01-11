@@ -1,0 +1,75 @@
+#Morgan Jackson
+#11/15/22
+#Create a graphical user interface (GUI) version of the Rock, Paper, Scissors game.
+#The program should bring up a window that allows the user to enter their play.
+ 
+# import tkinter module
+from tkinter import *
+import random
+#tkinter interface
+root = Tk()
+# How to name the window
+root.title("Rock, Paper, Scissors Game")
+def game_control():
+    from random import randint
+    computer_choice = randint(0,2)
+    user_choice = int(user_pick.get())
+    
+    #create a if, elif, else statement of rock, paper, scissiors
+    game = ["Rock", "Paper", "Scissors"]
+    computer_answerLabel["text"] = game[computer_choice]
+    user_answerLabel["text"] = game[user_choice]
+    if user_choice == 0 and computer_choice == 1:
+        winner_answerLabel["text"] = "computer"
+    elif user_choice == 1 and computer_choice == 2:
+        winner_answerLabel["text"] = "computer"
+    elif user_choice == 2 and computer_choice == 0:
+        winner_answerLabel["text"] = "computer"
+    elif user_choice == computer_choice:
+        winner_answerLabel["text"] = "tie"
+    else:
+        winner_answerLabel["text"] = "user"    
+    
+
+
+#create label for options
+optionsLabel = Label(root, text = " Please select Rock(0), Paper(1), or Scissors(2)")
+optionsLabel.grid(row = 0, column = 0)
+
+#create label for user_played
+user_playedLabel = Label(root, text = "user_played")
+user_playedLabel.grid(row = 2, column = 0, sticky = "e")
+
+#create label for computer_played
+computer_playedLabel = Label(root, text = "computer_played")
+computer_playedLabel.grid(row = 3, column = 0, sticky = "e")
+
+#create label for winner
+winnerLabel = Label(root, text = "winner")
+winnerLabel.grid(row = 4, column = 0, sticky = "e")
+
+#create label for user_answer
+user_answerLabel = Label(root, text = " - ")
+user_answerLabel.grid(row = 2, column = 1)
+
+#create label for computer_answer
+computer_answerLabel = Label(root, text = " - ")
+computer_answerLabel.grid(row = 3, column = 1)
+
+#create label for winner_answer 
+winner_answerLabel = Label(root, text = " - ")
+winner_answerLabel.grid(row = 4, column = 1)
+
+# create button to play
+play_button = Button(root, text = "PLAY", width = 11, height = 1, command = game_control)
+play_button.grid(row = 1, column = 0)
+
+
+# create text box for user pick  
+user_pick = Entry(root, width = 10)
+user_pick.grid(row = 0 , column = 1) 
+
+
+
+# Execute Tkinter
+root.mainloop()
